@@ -9,7 +9,7 @@ const DisputeSubmittedPage: React.FC = () => {
 
   return (
     <Container maxWidth="sm">
-      <Paper sx={{ p: 4, mt: 8, textAlign: 'center' }}>
+      <Paper sx={{ p: 4, mt: 8, textAlign: 'center', backgroundColor: 'rgba(255, 255, 255, 0.9)' }}>
         <Gavel sx={{ fontSize: 60, color: 'warning.main' }} />
         <Typography variant="h4" component="h1" gutterBottom sx={{ mt: 2 }}>
           Dispute Submitted

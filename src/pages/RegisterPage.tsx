@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { Box, Button, Container, TextField, Typography } from '@mui/material';
+import { Box, Button, Container, TextField, Typography, Paper } from '@mui/material';
 import { hubspotService } from '../services/hubspot';
 
 const RegisterPage: React.FC = () => {
@@ -31,7 +31,7 @@ const RegisterPage: React.FC = () => {
 
   return (
     <Container maxWidth="sm">
-      <Box sx={{ my: 4 }}>
+      <Paper sx={{ p: 4, my: 4, backgroundColor: 'rgba(255, 255, 255, 0.9)' }}>
         <Typography variant="h4" component="h1" gutterBottom>
           Register Your Business
         </Typography>
@@ -99,7 +99,7 @@ const RegisterPage: React.FC = () => {
             Register
           </Button>
         </Box>
-      </Box>
+      </Paper>
     </Container>
   );
 };

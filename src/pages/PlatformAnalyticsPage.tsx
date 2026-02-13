@@ -1,6 +1,6 @@
 
 import React, { useEffect } from 'react';
-import { Box, Container, Typography, Grid, CircularProgress } from '@mui/material';
+import { Box, Container, Typography, Grid, CircularProgress, Paper } from '@mui/material';
 import UserGrowthChart from '../components/UserGrowthChart';
 import DonationVolumeChart from '../components/DonationVolumeChart';
 import CategoryDistributionChart from '../components/CategoryDistributionChart';
@@ -25,7 +25,7 @@ const PlatformAnalyticsPage: React.FC = () => {
 
   return (
     <Container maxWidth="lg">
-      <Box sx={{ my: 4 }}>
+      <Paper sx={{ p: 4, my: 4, backgroundColor: 'rgba(255, 255, 255, 0.9)' }}>
         <Typography variant="h4" component="h1" gutterBottom>
           Platform Analytics
         </Typography>
@@ -34,7 +34,9 @@ const PlatformAnalyticsPage: React.FC = () => {
         </Typography>
 
         {loading ? (
-          <CircularProgress />
+          <Box sx={{ display: 'flex', justifyContent: 'center', my: 4 }}>
+            <CircularProgress />
+          </Box>
         ) : (
           <Grid container spacing={3}>
             <Grid item xs={12} md={6}>
@@ -48,7 +50,7 @@ const PlatformAnalyticsPage: React.FC = () => {
             </Grid>
           </Grid>
         )}
-      </Box>
+      </Paper>
     </Container>
   );
 };

@@ -15,7 +15,7 @@ const DonationStatusPage: React.FC = () => {
         <Typography variant="h4" component="h1" gutterBottom>
           Donation Status
         </Typography>
-        <Paper sx={{ p: 3, mb: 4 }}>
+        <Paper sx={{ p: 3, mb: 4, backgroundColor: 'rgba(255, 255, 255, 0.9)' }}>
           <Typography variant="h6">Donation to FoodBank SG</Typography>
           <Typography variant="body2" color="text.secondary" gutterBottom>Status: {steps[activeStep]}</Typography>
           <Stepper activeStep={activeStep} alternativeLabel>
@@ -30,7 +30,7 @@ const DonationStatusPage: React.FC = () => {
         <Grid container spacing={4}>
           <Grid item xs={12} md={6}>
             <Typography variant="h6" gutterBottom>Pickup Coordination</Typography>
-            <Paper sx={{ p: 2 }}>
+            <Paper sx={{ p: 2, backgroundColor: 'rgba(255, 255, 255, 0.9)' }}>
               <Typography variant="body1"><strong>NGO:</strong> FoodBank SG</Typography>
               <Typography variant="body1"><strong>Pickup Address:</strong> 123 Food Street, Singapore</Typography>
               <Typography variant="body1"><strong>Pickup Window:</strong> 2024-07-28, 2:00 PM - 5:00 PM</Typography>
@@ -41,7 +41,7 @@ const DonationStatusPage: React.FC = () => {
           </Grid>
           <Grid item xs={12} md={6}>
             <Typography variant="h6" gutterBottom>Actions</Typography>
-            <Paper sx={{ p: 2 }}>
+            <Paper sx={{ p: 2, backgroundColor: 'rgba(255, 255, 255, 0.9)' }}>
               <Button variant="contained" fullWidth sx={{ mb: 1 }}>Mark as Ready for Pickup</Button>
               <Button variant="outlined" color="error" fullWidth>Report a No-Show</Button>
             </Paper>

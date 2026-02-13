@@ -1,11 +1,11 @@
 
 import React from 'react';
-import { Box, Button, Container, TextField, Typography } from '@mui/material';
+import { Box, Button, Container, TextField, Typography, Paper } from '@mui/material';
 
 const ProfilePage: React.FC = () => {
   return (
     <Container maxWidth="md">
-      <Box sx={{ my: 4 }}>
+      <Paper sx={{ p: 4, my: 4, backgroundColor: 'rgba(255, 255, 255, 0.9)' }}>
         <Typography variant="h4" component="h1" gutterBottom>
           Company Profile
         </Typography>
@@ -42,7 +42,7 @@ const ProfilePage: React.FC = () => {
             Save Profile
           </Button>
         </Box>
-      </Box>
+      </Paper>
     </Container>
   );
 };

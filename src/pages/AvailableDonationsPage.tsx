@@ -1,6 +1,6 @@
 
 import React, { useEffect } from 'react';
-import { Container, Typography, Grid, Box, CircularProgress } from '@mui/material';
+import { Container, Typography, Grid, Box, CircularProgress, Paper } from '@mui/material';
 import DonationCard from '../components/DonationCard';
 import useDonationStore from '../stores/donationStore';
 
@@ -15,7 +15,7 @@ const AvailableDonationsPage: React.FC = () => {
 
   return (
     <Container maxWidth="lg">
-      <Box sx={{ my: 4 }}>
+      <Paper sx={{ p: 4, my: 4, backgroundColor: 'rgba(255, 255, 255, 0.9)' }}>
         <Typography variant="h4" component="h1" gutterBottom>
           Available Donations
         </Typography>
@@ -35,7 +35,7 @@ const AvailableDonationsPage: React.FC = () => {
             ))}
           </Grid>
         )}
-      </Box>
+      </Paper>
     </Container>
   );
 };

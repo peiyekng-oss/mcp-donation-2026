@@ -29,53 +29,59 @@ const PlatformAnalyticsPage = lazy(() => import('./pages/PlatformAnalyticsPage')
 
 const App: React.FC = () => {
   return (
-    <Router>
-      <AppBar position="static">
-        <Toolbar>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            WeGive
-          </Typography>
-          <Button color="inherit" component={Link} to="/">Home</Button>
-          <Button color="inherit" component={Link} to="/register">Donor Register</Button>
-          <Button color="inherit" component={Link} to="/ngo/register">NGO Register</Button>
-          <Button color="inherit" component={Link} to="/profile">Profile</Button>
-          <Button color="inherit" component={Link} to="/create">Create Donation</Button>
-          <Button color="inherit" component={Link} to="/donations">My Donations</Button>
-          <Button color="inherit" component={Link} to="/dashboard">Impact Dashboard</Button>
-          <Button color="inherit" component={Link} to="/available-donations">Available Donations</Button>
-          <Button color="inherit" component={Link} to="/ngo/accepted-donations">Accepted Donations</Button>
-          <Button color="inherit" component={Link} to="/ngo/settings">NGO Settings</Button>
-          <Button color="inherit" component={Link} to="/admin/dashboard">Admin Dashboard</Button>
-        </Toolbar>
-      </AppBar>
-      <Suspense fallback={<Box sx={{ display: 'flex', justifyContent: 'center', my: 4 }}><CircularProgress /></Box>}>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/register" element={<RegisterPage />} />
-          <Route path="/profile" element={<ProfilePage />} />
-          <Route path="/create" element={<CreateDonationPage />} />
-          <Route path="/donations" element={<DonationListPage />} />
-          <Route path="/donations/:id" element={<DonationStatusPage />} />
-          <Route path="/dashboard" element={<ImpactDashboardPage />} />
-          <Route path="/available-donations" element={<AvailableDonationsPage />} />
-          <Route path="/available-donations/:id" element={<DonationDetailsPage />} />
-          <Route path="/ngo/register" element={<NgoRegisterPage />} />
-          <Route path="/ngo/dashboard" element={<NgoDashboardPage />} />
-          <Route path="/ngo/accepted-donations" element={<AcceptedDonationsPage />} />
-          <Route path="/ngo/pickup-coordination/:id" element={<PickupCoordinationPage />} />
-          <Route path="/ngo/pickup-confirmation/:id" element={<ConfirmationPage />} />
-          <Route path="/ngo/quality-check/:id" element={<QualityCheckPage />} />
-          <Route path="/ngo/dispute-submitted/:id" element={<DisputeSubmittedPage />} />
-          <Route path="/ngo/impact-reporting/:id" element={<ImpactReportingPage />} />
-          <Route path="/ngo/impact-report-submitted/:id" element={<ImpactReportSubmittedPage />} />
-          <Route path="/ngo/settings" element={<NgoSettingsPage />} />
-          <Route path="/admin/dashboard" element={<AdminDashboardPage />} />
-          <Route path="/admin/disputes" element={<DisputeResolutionPage />} />
-          <Route path="/admin/users" element={<UserManagementPage />} />
-          <Route path="/admin/analytics" element={<PlatformAnalyticsPage />} />
-        </Routes>
-      </Suspense>
-    </Router>
+    <Box sx={{
+      minHeight: '100vh',
+      background: 'url(https://images.unsplash.com/photo-1519681393784-a4f157482de5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80) no-repeat center center fixed',
+      backgroundSize: 'cover',
+    }}>
+      <Router>
+        <AppBar position="static">
+          <Toolbar>
+            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+              WeGive
+            </Typography>
+            <Button color="inherit" component={Link} to="/">Home</Button>
+            <Button color="inherit" component={Link} to="/register">Donor Register</Button>
+            <Button color="inherit" component={Link} to="/ngo/register">NGO Register</Button>
+            <Button color="inherit" component={Link} to="/profile">Profile</Button>
+            <Button color="inherit" component={Link} to="/create">Create Donation</Button>
+            <Button color="inherit" component={Link} to="/donations">My Donations</Button>
+            <Button color="inherit" component={Link} to="/dashboard">Impact Dashboard</Button>
+            <Button color="inherit" component={Link} to="/available-donations">Available Donations</Button>
+            <Button color="inherit" component={Link} to="/ngo/accepted-donations">Accepted Donations</Button>
+            <Button color="inherit" component={Link} to="/ngo/settings">NGO Settings</Button>
+            <Button color="inherit" component={Link} to="/admin/dashboard">Admin Dashboard</Button>
+          </Toolbar>
+        </AppBar>
+        <Suspense fallback={<Box sx={{ display: 'flex', justifyContent: 'center', my: 4 }}><CircularProgress /></Box>}>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/register" element={<RegisterPage />} />
+            <Route path="/profile" element={<ProfilePage />} />
+            <Route path="/create" element={<CreateDonationPage />} />
+            <Route path="/donations" element={<DonationListPage />} />
+            <Route path="/donations/:id" element={<DonationStatusPage />} />
+            <Route path="/dashboard" element={<ImpactDashboardPage />} />
+            <Route path="/available-donations" element={<AvailableDonationsPage />} />
+            <Route path="/available-donations/:id" element={<DonationDetailsPage />} />
+            <Route path="/ngo/register" element={<NgoRegisterPage />} />
+            <Route path="/ngo/dashboard" element={<NgoDashboardPage />} />
+            <Route path="/ngo/accepted-donations" element={<AcceptedDonationsPage />} />
+            <Route path="/ngo/pickup-coordination/:id" element={<PickupCoordinationPage />} />
+            <Route path="/ngo/pickup-confirmation/:id" element={<ConfirmationPage />} />
+            <Route path="/ngo/quality-check/:id" element={<QualityCheckPage />} />
+            <Route path="/ngo/dispute-submitted/:id" element={<DisputeSubmittedPage />} />
+            <Route path="/ngo/impact-reporting/:id" element={<ImpactReportingPage />} />
+            <Route path="/ngo/impact-report-submitted/:id" element={<ImpactReportSubmittedPage />} />
+            <Route path="/ngo/settings" element={<NgoSettingsPage />} />
+            <Route path="/admin/dashboard" element={<AdminDashboardPage />} />
+            <Route path="/admin/disputes" element={<DisputeResolutionPage />} />
+            <Route path="/admin/users" element={<UserManagementPage />} />
+            <Route path="/admin/analytics" element={<PlatformAnalyticsPage />} />
+          </Routes>
+        </Suspense>
+      </Router>
+    </Box>
   );
 };
 

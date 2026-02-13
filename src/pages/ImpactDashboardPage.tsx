@@ -24,7 +24,11 @@ const ImpactDashboardPage: React.FC = () => {
   };
 
   if (loading) {
-    return <CircularProgress />;
+    return (
+      <Container maxWidth="lg" sx={{ textAlign: 'center', my: 4 }}>
+        <CircularProgress />
+      </Container>
+    );
   }
 
   return (
@@ -35,19 +39,19 @@ const ImpactDashboardPage: React.FC = () => {
         </Typography>
         <Grid container spacing={3}>
           <Grid item xs={12} md={4}>
-            <Paper sx={{ p: 2, textAlign: 'center' }}>
+            <Paper sx={{ p: 2, textAlign: 'center', backgroundColor: 'rgba(255, 255, 255, 0.9)' }}>
               <Typography variant="h5">Total Donations</Typography>
               <Typography variant="h3" color="primary">{donations.length}</Typography>
             </Paper>
           </Grid>
           <Grid item xs={12} md={4}>
-            <Paper sx={{ p: 2, textAlign: 'center' }}>
+            <Paper sx={{ p: 2, textAlign: 'center', backgroundColor: 'rgba(255, 255, 255, 0.9)' }}>
               <Typography variant="h5">Estimated Value</Typography>
               <Typography variant="h3" color="primary">$5,400</Typography>
             </Paper>
           </Grid>
           <Grid item xs={12} md={4}>
-            <Paper sx={{ p: 2, textAlign: 'center' }}>
+            <Paper sx={{ p: 2, textAlign: 'center', backgroundColor: 'rgba(255, 255, 255, 0.9)' }}>
               <Typography variant="h5">Carbon Saved (est.)</Typography>
               <Typography variant="h3" color="primary">1.2 tCO₂e</Typography>
             </Paper>
@@ -61,7 +65,7 @@ const ImpactDashboardPage: React.FC = () => {
               Export to Excel
             </Button>
           </Box>
-          <Paper sx={{ p: 2 }}>
+          <Paper sx={{ p: 2, backgroundColor: 'rgba(255, 255, 255, 0.9)' }}>
             {donations.map(donation => (
               <Typography key={donation.id}>
                 {donation.title} to {donation.donor?.name || 'N/A'} - {donation.status}

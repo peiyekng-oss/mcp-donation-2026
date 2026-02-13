@@ -42,7 +42,7 @@ const NgoRegisterPage: React.FC = () => {
 
   return (
     <Container maxWidth="sm">
-      <Paper sx={{ p: 4, mt: 4 }}>
+      <Paper sx={{ p: 4, mt: 4, backgroundColor: 'rgba(255, 255, 255, 0.9)' }}>
         <Typography variant="h4" component="h1" gutterBottom>
           NGO Registration
         </Typography>

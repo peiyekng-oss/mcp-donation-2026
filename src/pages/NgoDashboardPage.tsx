@@ -17,7 +17,7 @@ const NgoDashboardPage: React.FC = () => {
 
         <Grid container spacing={4}>
           <Grid item xs={12} md={6}>
-            <Paper sx={{ p: 3, height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+            <Paper sx={{ p: 3, height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', backgroundColor: 'rgba(255, 255, 255, 0.9)' }}>
               <Search sx={{ fontSize: 60, color: 'primary.main', mb: 2 }} />
               <Typography variant="h6" gutterBottom align="center">
                 Browse Available Donations
@@ -36,7 +36,7 @@ const NgoDashboardPage: React.FC = () => {
             </Paper>
           </Grid>
           <Grid item xs={12} md={6}>
-            <Paper sx={{ p: 3, height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+            <Paper sx={{ p: 3, height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', backgroundColor: 'rgba(255, 255, 255, 0.9)' }}>
               <CheckCircle sx={{ fontSize: 60, color: 'secondary.main', mb: 2 }} />
               <Typography variant="h6" gutterBottom align="center">
                 Manage Accepted Donations
@@ -55,7 +55,7 @@ const NgoDashboardPage: React.FC = () => {
             </Paper>
           </Grid>
           <Grid item xs={12} md={6}>
-            <Paper sx={{ p: 3, height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+            <Paper sx={{ p: 3, height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', backgroundColor: 'rgba(255, 255, 255, 0.9)' }}>
               <Assessment sx={{ fontSize: 60, color: 'success.main', mb: 2 }} />
               <Typography variant="h6" gutterBottom align="center">
                 Report on Completed Donations
@@ -74,7 +74,7 @@ const NgoDashboardPage: React.FC = () => {
             </Paper>
           </Grid>
           <Grid item xs={12} md={6}>
-            <Paper sx={{ p: 3, mt: 2, display: 'flex', flexDirection: 'column', alignItems: 'center', background: '#f5f5f5' }}>
+            <Paper sx={{ p: 3, mt: 2, display: 'flex', flexDirection: 'column', alignItems: 'center', backgroundColor: 'rgba(255, 255, 255, 0.9)' }}>
               <Settings sx={{ fontSize: 60, color: 'action.active', mb: 2 }} />
               <Typography variant="h6" gutterBottom>
                 Configure Your Preferences

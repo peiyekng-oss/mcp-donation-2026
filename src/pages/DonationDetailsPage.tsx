@@ -34,7 +34,7 @@ const DonationDetailsPage: React.FC = () => {
 
   return (
     <Container maxWidth="md">
-      <Paper sx={{ p: 4, mt: 4 }}>
+      <Paper sx={{ p: 4, mt: 4, backgroundColor: 'rgba(255, 255, 255, 0.9)' }}>
         <Grid container spacing={4}>
           <Grid item xs={12} md={6}>
             <CardMedia

@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { Stepper, Step, StepLabel, Button, Typography, Container, TextField, Box } from '@mui/material';
+import { Stepper, Step, StepLabel, Button, Typography, Container, TextField, Box, Paper } from '@mui/material';
 import useDonationStore from '../stores/donationStore';
 
 const steps = ['Item Details', 'Pickup Information', 'Upload Photos'];
@@ -101,7 +101,7 @@ const CreateDonationPage: React.FC = () => {
 
   return (
     <Container maxWidth="sm">
-      <Box sx={{ my: 4 }}>
+      <Paper sx={{ p: 4, my: 4, backgroundColor: 'rgba(255, 255, 255, 0.9)' }}>
         <Typography variant="h4" component="h1" gutterBottom>
           Create a New Donation
         </Typography>
@@ -143,7 +143,7 @@ const CreateDonationPage: React.FC = () => {
             </>
           )}
         </>
-      </Box>
+      </Paper>
     </Container>
   );
 };

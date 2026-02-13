@@ -21,7 +21,7 @@ const UserManagementPage: React.FC = () => {
           View and manage all platform users.
         </Typography>
 
-        <Paper sx={{ p: 2 }}>
+        <Paper sx={{ p: 2, backgroundColor: 'rgba(255, 255, 255, 0.9)' }}>
           {loading ? <CircularProgress /> : <UserTable users={users} />}
         </Paper>
       </Box>

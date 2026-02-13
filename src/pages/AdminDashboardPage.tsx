@@ -34,7 +34,7 @@ const AdminDashboardPage: React.FC = () => {
           </Button>
         </Box>
 
-        <Paper sx={{ p: 2 }}>
+        <Paper sx={{ p: 2, backgroundColor: 'rgba(255, 255, 255, 0.9)' }}>
           {loading ? (
             <CircularProgress />
           ) : (

@@ -17,7 +17,7 @@ const DonationListPage: React.FC = () => {
         <Typography variant="h4" component="h1" gutterBottom>
           My Donations
         </Typography>
-        <Paper>
+        <Paper sx={{ p: 2, backgroundColor: 'rgba(255, 255, 255, 0.9)' }}>
           {loading ? (
             <Box sx={{ display: 'flex', justifyContent: 'center', my: 4 }}>
               <CircularProgress />

@@ -16,12 +16,16 @@ const ConfirmationPage: React.FC = () => {
   }, [id, fetchDonationById]);
 
   if (loading) {
-    return <CircularProgress />;
+    return (
+      <Box sx={{ display: 'flex', justifyContent: 'center', my: 4 }}>
+        <CircularProgress />
+      </Box>
+    );
   }
 
   return (
     <Container maxWidth="sm">
-      <Paper sx={{ p: 4, mt: 8, textAlign: 'center' }}>
+      <Paper sx={{ p: 4, mt: 8, textAlign: 'center', backgroundColor: 'rgba(255, 255, 255, 0.9)' }}>
         <CheckCircleOutline sx={{ fontSize: 60, color: 'success.main' }} />
         <Typography variant="h4" component="h1" gutterBottom sx={{ mt: 2 }}>
           Pickup Confirmed!

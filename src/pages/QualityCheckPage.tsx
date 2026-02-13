@@ -28,7 +28,11 @@ const QualityCheckPage: React.FC = () => {
   };
 
   if (loading) {
-    return <CircularProgress />;
+    return (
+      <Box sx={{ display: 'flex', justifyContent: 'center', my: 4 }}>
+        <CircularProgress />
+      </Box>
+    );
   }
 
   if (!donation) {
@@ -37,7 +41,7 @@ const QualityCheckPage: React.FC = () => {
 
   return (
     <Container maxWidth="md">
-      <Paper sx={{ p: 4, mt: 4 }}>
+      <Paper sx={{ p: 4, mt: 4, backgroundColor: 'rgba(255, 255, 255, 0.9)' }}>
         <Typography variant="h4" component="h1" gutterBottom>
           Quality Check
         </Typography>
