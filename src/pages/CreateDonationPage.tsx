@@ -1,23 +1,27 @@
 
 import React, { useState } from 'react';
 import { Stepper, Step, StepLabel, Button, Typography, Container, TextField, Box } from '@mui/material';
+import useDonationStore from '../stores/donationStore';
 
 const steps = ['Item Details', 'Pickup Information', 'Upload Photos'];
 
 const CreateDonationPage: React.FC = () => {
   const [activeStep, setActiveStep] = useState(0);
   const [formData, setFormData] = useState({
-    itemName: '',
+    title: '',
     description: '',
     category: '',
     quantity: '',
     expiryDate: '',
     storageCondition: '',
-    pickupAddress: '',
+    location: '',
     pickupDate: '',
-    pickupTimeWindow: ''
+    pickupTimeWindow: '',
+    status: 'Available',
+    donor: 'Anonymous' // Or get the logged in user
   });
   const [selectedFiles, setSelectedFiles] = useState<FileList | null>(null);
+  const createDonation = useDonationStore((state) => state.createDonation);
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -42,8 +46,7 @@ const CreateDonationPage: React.FC = () => {
   };
 
   const handlePublish = () => {
-    console.log("Publishing donation:", { ...formData, files: selectedFiles });
-    // Later, this will make an API call to publish the donation
+    createDonation(formData);
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
 
@@ -52,7 +55,7 @@ const CreateDonationPage: React.FC = () => {
       case 0:
         return (
           <>
-            <TextField label="Item Name" name="itemName" value={formData.itemName} onChange={handleChange} fullWidth margin="normal" />
+            <TextField label="Item Name" name="title" value={formData.title} onChange={handleChange} fullWidth margin="normal" />
             <TextField label="Description" name="description" value={formData.description} onChange={handleChange} fullWidth margin="normal" />
             <TextField label="Category" name="category" value={formData.category} onChange={handleChange} fullWidth margin="normal" />
             <TextField label="Quantity" name="quantity" value={formData.quantity} onChange={handleChange} fullWidth margin="normal" />
@@ -63,7 +66,7 @@ const CreateDonationPage: React.FC = () => {
       case 1:
         return (
           <>
-            <TextField label="Pickup Address" name="pickupAddress" value={formData.pickupAddress} onChange={handleChange} fullWidth margin="normal" />
+            <TextField label="Pickup Address" name="location" value={formData.location} onChange={handleChange} fullWidth margin="normal" />
             <TextField label="Pickup Date" name="pickupDate" type="date" value={formData.pickupDate} onChange={handleChange} fullWidth margin="normal" InputLabelProps={{ shrink: true }} />
             <TextField label="Pickup Time Window" name="pickupTimeWindow" value={formData.pickupTimeWindow} onChange={handleChange} fullWidth margin="normal" />
           </>
