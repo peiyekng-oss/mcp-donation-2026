@@ -1,0 +1,43 @@
+
+import React from 'react';
+import { Box, Container, Typography, Paper, Button } from '@mui/material';
+import { Link } from 'react-router-dom';
+import VerificationRequestCard from '../components/VerificationRequestCard';
+import { mockVerificationRequests } from '../mockData/verificationRequests';
+
+const AdminDashboardPage: React.FC = () => {
+  return (
+    <Container maxWidth="lg">
+      <Box sx={{ my: 4 }}>
+        <Typography variant="h4" component="h1" gutterBottom>
+          Admin Dashboard
+        </Typography>
+        <Typography variant="body1" sx={{ mb: 4 }}>
+          Review and approve pending NGO verification requests.
+        </Typography>
+
+        <Box sx={{ mb: 2, display: 'flex', gap: 2 }}>
+          <Button component={Link} to="/admin/disputes" variant="contained">
+            View Open Disputes
+          </Button>
+          <Button component={Link} to="/admin/users" variant="contained">
+            Manage Users
+          </Button>
+          <Button component={Link} to="/admin/analytics" variant="contained">
+            Platform Analytics
+          </Button>
+        </Box>
+
+        <Paper sx={{ p: 2 }}>
+          {
+            mockVerificationRequests.map(request => (
+              <VerificationRequestCard key={request.id} request={request} />
+            ))
+          }
+        </Paper>
+      </Box>
+    </Container>
+  );
+};
+
+export default AdminDashboardPage;
