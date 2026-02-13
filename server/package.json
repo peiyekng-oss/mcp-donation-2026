@@ -11,8 +11,10 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@hubspot/api-client": "^13.4.0",
     "cors": "^2.8.6",
     "express": "^5.2.1",
+    "googleapis": "^171.4.0",
     "typescript": "^5.9.3"
   },
   "devDependencies": {

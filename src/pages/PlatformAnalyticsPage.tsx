@@ -1,12 +1,28 @@
 
-import React from 'react';
-import { Box, Container, Typography, Grid } from '@mui/material';
+import React, { useEffect } from 'react';
+import { Box, Container, Typography, Grid, CircularProgress } from '@mui/material';
 import UserGrowthChart from '../components/UserGrowthChart';
 import DonationVolumeChart from '../components/DonationVolumeChart';
 import CategoryDistributionChart from '../components/CategoryDistributionChart';
-import { userGrowthData, donationVolumeData, categoryDistributionData } from '../mockData/analytics';
+import useAnalyticsStore from '../stores/analyticsStore';
 
 const PlatformAnalyticsPage: React.FC = () => {
+  const {
+    userGrowth,
+    donationVolume,
+    categoryDistribution,
+    loading,
+    fetchUserGrowth,
+    fetchDonationVolume,
+    fetchCategoryDistribution,
+  } = useAnalyticsStore();
+
+  useEffect(() => {
+    fetchUserGrowth();
+    fetchDonationVolume();
+    fetchCategoryDistribution();
+  }, [fetchUserGrowth, fetchDonationVolume, fetchCategoryDistribution]);
+
   return (
     <Container maxWidth="lg">
       <Box sx={{ my: 4 }}>
@@ -17,17 +33,21 @@ const PlatformAnalyticsPage: React.FC = () => {
           An overview of key platform metrics.
         </Typography>
 
-        <Grid container spacing={3}>
-          <Grid item xs={12} md={6}>
-            <UserGrowthChart data={userGrowthData} />
+        {loading ? (
+          <CircularProgress />
+        ) : (
+          <Grid container spacing={3}>
+            <Grid item xs={12} md={6}>
+              <UserGrowthChart data={userGrowth} />
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <DonationVolumeChart data={donationVolume} />
+            </Grid>
+            <Grid item xs={12}>
+              <CategoryDistributionChart data={categoryDistribution} />
+            </Grid>
           </Grid>
-          <Grid item xs={12} md={6}>
-            <DonationVolumeChart data={donationVolumeData} />
-          </Grid>
-          <Grid item xs={12}>
-            <CategoryDistributionChart data={categoryDistributionData} />
-          </Grid>
-        </Grid>
+        )}
       </Box>
     </Container>
   );

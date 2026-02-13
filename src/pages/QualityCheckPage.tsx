@@ -1,13 +1,19 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { Box, Button, Container, Typography, Paper, TextField, Input } from '@mui/material';
-import { mockDonations } from '../mockData/donations';
+import { Box, Button, Container, Typography, Paper, TextField, Input, CircularProgress } from '@mui/material';
+import useDonationStore from '../stores/donationStore';
 
 const QualityCheckPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
-  const donation = mockDonations.find(d => d.id === id);
+  const { selectedDonation: donation, loading, fetchDonationById } = useDonationStore();
+
+  useEffect(() => {
+    if (id) {
+      fetchDonationById(id);
+    }
+  }, [id, fetchDonationById]);
 
   const handleDisputeSubmit = () => {
     // In a real app, this would submit the dispute to the backend.
@@ -20,6 +26,10 @@ const QualityCheckPage: React.FC = () => {
     alert('Thank you for confirming the donation quality!');
     navigate('/ngo/dashboard');
   };
+
+  if (loading) {
+    return <CircularProgress />;
+  }
 
   if (!donation) {
     return <Typography>Donation not found.</Typography>;

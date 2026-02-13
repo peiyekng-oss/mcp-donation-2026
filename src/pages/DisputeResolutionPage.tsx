@@ -1,10 +1,16 @@
 
-import React from 'react';
-import { Box, Container, Typography, Paper } from '@mui/material';
+import React, { useEffect } from 'react';
+import { Box, Container, Typography, Paper, CircularProgress } from '@mui/material';
 import DisputeCard from '../components/DisputeCard';
-import { mockDisputes } from '../mockData/disputes';
+import useDisputeStore from '../stores/disputeStore';
 
 const DisputeResolutionPage: React.FC = () => {
+  const { disputes, loading, fetchDisputes } = useDisputeStore();
+
+  useEffect(() => {
+    fetchDisputes();
+  }, [fetchDisputes]);
+
   return (
     <Container maxWidth="lg">
       <Box sx={{ my: 4 }}>
@@ -16,11 +22,13 @@ const DisputeResolutionPage: React.FC = () => {
         </Typography>
 
         <Paper sx={{ p: 2 }}>
-          {
-            mockDisputes.map(dispute => (
+          {loading ? (
+            <CircularProgress />
+          ) : (
+            disputes.map(dispute => (
               <DisputeCard key={dispute.id} dispute={dispute} />
             ))
-          }
+          )}
         </Paper>
       </Box>
     </Container>

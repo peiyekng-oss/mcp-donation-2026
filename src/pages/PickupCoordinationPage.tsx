@@ -1,15 +1,21 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { Box, Button, Container, Typography, Paper, Grid, TextField } from '@mui/material';
-import { mockDonations } from '../mockData/donations';
+import { Box, Button, Container, Typography, Paper, Grid, TextField, CircularProgress } from '@mui/material';
+import useDonationStore from '../stores/donationStore';
 import Map from '../components/Map';
 import { googleCalendarService } from '../services/googleCalendar';
 
 const PickupCoordinationPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
-  const donation = mockDonations.find(d => d.id === id);
+  const { selectedDonation: donation, loading, fetchDonationById } = useDonationStore();
+
+  useEffect(() => {
+    if (id) {
+      fetchDonationById(id);
+    }
+  }, [id, fetchDonationById]);
 
   const handleConfirmPickup = () => {
     // In a real app, this would update the donation status in the backend.
@@ -38,6 +44,10 @@ const PickupCoordinationPage: React.FC = () => {
       await googleCalendarService.createEvent(event);
     }
   };
+
+  if (loading) {
+    return <CircularProgress />;
+  }
 
   if (!donation) {
     return <Typography>Donation not found.</Typography>;

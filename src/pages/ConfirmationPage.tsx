@@ -1,13 +1,23 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { Box, Button, Container, Typography, Paper } from '@mui/material';
+import { Box, Button, Container, Typography, Paper, CircularProgress } from '@mui/material';
 import { CheckCircleOutline } from '@mui/icons-material';
-import { mockDonations } from '../mockData/donations';
+import useDonationStore from '../stores/donationStore';
 
 const ConfirmationPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
-  const donation = mockDonations.find(d => d.id === id);
+  const { selectedDonation: donation, loading, fetchDonationById } = useDonationStore();
+
+  useEffect(() => {
+    if (id) {
+      fetchDonationById(id);
+    }
+  }, [id, fetchDonationById]);
+
+  if (loading) {
+    return <CircularProgress />;
+  }
 
   return (
     <Container maxWidth="sm">

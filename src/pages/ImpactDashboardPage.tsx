@@ -1,22 +1,31 @@
 
-import React from 'react';
-import { Box, Button, Container, Grid, Paper, Typography } from '@mui/material';
+import React, { useEffect } from 'react';
+import { Box, Button, Container, Grid, Paper, Typography, CircularProgress } from '@mui/material';
 import { exportService } from '../services/exportService';
-import { mockDonations } from '../mockData/donations';
+import useDonationStore from '../stores/donationStore';
 
 const ImpactDashboardPage: React.FC = () => {
+  const { donations, loading, fetchDonations } = useDonationStore();
+
+  useEffect(() => {
+    fetchDonations();
+  }, [fetchDonations]);
 
   const handleExport = () => {
-    const dataToExport = mockDonations.map(donation => ({
+    const dataToExport = donations.map(donation => ({
       ID: donation.id,
       Title: donation.title,
       Quantity: donation.quantity,
       Status: donation.status,
-      DonatedTo: donation.ngo?.name || 'N/A',
+      DonatedTo: donation.donor?.name || 'N/A', // Corrected to use donor from donation
       DonationDate: new Date().toLocaleDateString(), // Placeholder
     }));
     exportService.exportToExcel(dataToExport, 'DonationHistory');
   };
+
+  if (loading) {
+    return <CircularProgress />;
+  }
 
   return (
     <Container maxWidth="lg">
@@ -28,7 +37,7 @@ const ImpactDashboardPage: React.FC = () => {
           <Grid item xs={12} md={4}>
             <Paper sx={{ p: 2, textAlign: 'center' }}>
               <Typography variant="h5">Total Donations</Typography>
-              <Typography variant="h3" color="primary">{mockDonations.length}</Typography>
+              <Typography variant="h3" color="primary">{donations.length}</Typography>
             </Paper>
           </Grid>
           <Grid item xs={12} md={4}>
@@ -53,9 +62,9 @@ const ImpactDashboardPage: React.FC = () => {
             </Button>
           </Box>
           <Paper sx={{ p: 2 }}>
-            {mockDonations.map(donation => (
+            {donations.map(donation => (
               <Typography key={donation.id}>
-                {donation.title} to {donation.ngo?.name || 'N/A'} - {donation.status}
+                {donation.title} to {donation.donor?.name || 'N/A'} - {donation.status}
               </Typography>
             ))}
           </Paper>

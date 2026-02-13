@@ -1,19 +1,29 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { Box, Button, Container, Typography, Paper, TextField } from '@mui/material';
-import { mockDonations } from '../mockData/donations';
+import { Box, Button, Container, Typography, Paper, TextField, CircularProgress } from '@mui/material';
+import useDonationStore from '../stores/donationStore';
 
 const ImpactReportingPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
-  const donation = mockDonations.find(d => d.id === id);
+  const { selectedDonation: donation, loading, fetchDonationById } = useDonationStore();
+
+  useEffect(() => {
+    if (id) {
+      fetchDonationById(id);
+    }
+  }, [id, fetchDonationById]);
 
   const handleSubmitReport = () => {
     // In a real app, this would submit the impact report to the backend.
     alert('Impact report submitted. Thank you for making a difference!');
     navigate(`/ngo/impact-report-submitted/${id}`);
   };
+
+  if (loading) {
+    return <CircularProgress />;
+  }
 
   if (!donation) {
     return <Typography>Donation not found.</Typography>;

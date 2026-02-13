@@ -1,11 +1,17 @@
 
-import React from 'react';
-import { Box, Container, Typography, Paper, Button } from '@mui/material';
+import React, { useEffect } from 'react';
+import { Box, Container, Typography, Paper, Button, CircularProgress } from '@mui/material';
 import { Link } from 'react-router-dom';
 import VerificationRequestCard from '../components/VerificationRequestCard';
-import { mockVerificationRequests } from '../mockData/verificationRequests';
+import useVerificationRequestStore from '../stores/verificationRequestStore';
 
 const AdminDashboardPage: React.FC = () => {
+  const { requests, loading, fetchRequests } = useVerificationRequestStore();
+
+  useEffect(() => {
+    fetchRequests();
+  }, [fetchRequests]);
+
   return (
     <Container maxWidth="lg">
       <Box sx={{ my: 4 }}>
@@ -29,11 +35,13 @@ const AdminDashboardPage: React.FC = () => {
         </Box>
 
         <Paper sx={{ p: 2 }}>
-          {
-            mockVerificationRequests.map(request => (
+          {loading ? (
+            <CircularProgress />
+          ) : (
+            requests.map(request => (
               <VerificationRequestCard key={request.id} request={request} />
             ))
-          }
+          )}
         </Paper>
       </Box>
     </Container>

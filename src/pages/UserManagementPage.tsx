@@ -1,10 +1,16 @@
 
-import React from 'react';
-import { Box, Container, Typography, Paper } from '@mui/material';
+import React, { useEffect } from 'react';
+import { Box, Container, Typography, Paper, CircularProgress } from '@mui/material';
 import UserTable from '../components/UserTable';
-import { mockUsers } from '../mockData/users';
+import useUserStore from '../stores/userStore';
 
 const UserManagementPage: React.FC = () => {
+  const { users, loading, fetchUsers } = useUserStore();
+
+  useEffect(() => {
+    fetchUsers();
+  }, [fetchUsers]);
+
   return (
     <Container maxWidth="lg">
       <Box sx={{ my: 4 }}>
@@ -16,7 +22,7 @@ const UserManagementPage: React.FC = () => {
         </Typography>
 
         <Paper sx={{ p: 2 }}>
-          <UserTable users={mockUsers} />
+          {loading ? <CircularProgress /> : <UserTable users={users} />}
         </Paper>
       </Box>
     </Container>
